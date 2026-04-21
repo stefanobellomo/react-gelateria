@@ -13,6 +13,7 @@ export function GlobalProvider({ children }) {
         try {
             const response = await fetch(`${api_url}/products`)
             const data = await response.json()
+            setProducts(data)
 
         } catch (error) {
             console.error('chiamata api fallita')
@@ -26,8 +27,10 @@ export function GlobalProvider({ children }) {
 
 
     return (
-        <GlobalProvider.Provider>
+        <GlobalContext.Provider value={{
+            products
+        }}>
             {children}
-        </GlobalProvider.Provider>
+        </GlobalContext.Provider>
     )
 }
