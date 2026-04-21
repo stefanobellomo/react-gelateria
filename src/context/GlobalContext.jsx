@@ -19,6 +19,10 @@ export function GlobalProvider({ children }) {
         }
     }
 
+    useEffect(() => {
+        fetchProducts()
+    }, [])
+
 
 
     return (
