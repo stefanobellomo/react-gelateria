@@ -8,17 +8,27 @@ export default function ProductDetails() {
     return (
         <>
             <h1>Lista prodotti</h1>
-            {products.map(g => (
-                <div key={g.id} className="d-flex">
-                    <h3>{g.name}</h3>
-                    <div>
-                        <span>{g.brand}</span>
+            <div className="product-grid">
+                {products.map(p => (
+                    <div key={p.id} className="card">
+                        <div>
+                            <img className="img-card" src={p.image} />
+                        </div>
+                        <div>
+                            <h3 className="tit-card">{p.name}</h3>
+                            <div>
+                                <span>Brand: {p.brand}</span>
+                            </div>
+                            <div>
+                                <span>Prezzo: {p.price}€</span>
+                            </div>
+                            <div>
+                                <span>Rating: {p.rating}</span>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <img src={g.image} />
-                    </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </>
     )
 }

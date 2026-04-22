@@ -1,0 +1,19 @@
+.tit-card {
+    margin: 0px;
+}
+
+.card {
+    display: flex;
+    margin: 15px;
+}
+
+.img-card {
+
+    height: 75px;
+    width: 75px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+}
