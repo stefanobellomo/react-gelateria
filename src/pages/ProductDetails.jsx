@@ -20,8 +20,8 @@ export default function ProductDetails() {
                 onChange={e => setInputValue(e.target.value)} />
 
             {/* <select
-                value={category}
-                onChange={e => setCategory(e.target.value)}>
+                value={connectivity}
+                onChange={e => setConnectivity(e.target.value)}>
                 <option value=""></option>
             </select> */}
 

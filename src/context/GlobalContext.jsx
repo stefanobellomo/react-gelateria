@@ -9,6 +9,7 @@ export function GlobalProvider({ children }) {
 
     const [products, setProducts] = useState([])
     const [inputValue, setInputValue] = useState("")
+    const [connectivity, setConnectivity] = useState("All")
 
     const fetchProducts = async () => {
         try {
@@ -25,7 +26,11 @@ export function GlobalProvider({ children }) {
         fetchProducts()
     }, [])
 
-    const filteredProduct = products.filter(p => p.name.toLowerCase().includes(inputValue.toLowerCase()))
+    const filteredProduct = products.filter(p => {
+        const matchSearch = p.name.toLowerCase().includes(inputValue.toLowerCase())
+        const matchConnectivity = connectivity === "All" || p.connectivity === connectivity
+        return matchSearch && matchConnectivity
+    })
 
 
     return (
@@ -33,7 +38,9 @@ export function GlobalProvider({ children }) {
             products,
             filteredProduct,
             inputValue,
-            setInputValue
+            setInputValue,
+            connectivity,
+            setConnectivity
         }}>
             {children}
         </GlobalContext.Provider>
