@@ -7,7 +7,9 @@ export default function ProductDetails() {
         products,
         filteredProduct,
         inputValue,
-        setInputValue
+        setInputValue,
+        connectivity,
+        setConnectivity
     } = useContext(GlobalContext)
 
     return (
@@ -19,11 +21,14 @@ export default function ProductDetails() {
                 value={inputValue}
                 onChange={e => setInputValue(e.target.value)} />
 
-            {/* <select
+            <select
                 value={connectivity}
                 onChange={e => setConnectivity(e.target.value)}>
-                <option value=""></option>
-            </select> */}
+                <option value="All">All</option>
+                <option value="Bluetooth">Bluetooth</option>
+                <option value="Wireless">Wireless</option>
+                <option value="Solar">Solar</option>
+            </select>
 
             <div className="product-grid">
                 {filteredProduct.map(p => (
