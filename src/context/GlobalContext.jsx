@@ -8,6 +8,7 @@ export const GlobalContext = createContext()
 export function GlobalProvider({ children }) {
 
     const [products, setProducts] = useState([])
+    const [inputValue, setInputValue] = useState("")
 
     const fetchProducts = async () => {
         try {
@@ -24,11 +25,15 @@ export function GlobalProvider({ children }) {
         fetchProducts()
     }, [])
 
+    const filteredProduct = products.filter(p => p.name.toLowerCase().includes(inputValue.toLowerCase()))
 
 
     return (
         <GlobalContext.Provider value={{
-            products
+            products,
+            filteredProduct,
+            inputValue,
+            setInputValue
         }}>
             {children}
         </GlobalContext.Provider>

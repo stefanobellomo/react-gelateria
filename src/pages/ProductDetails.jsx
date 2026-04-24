@@ -3,8 +3,12 @@ import { GlobalContext } from "../context/GlobalContext"
 
 export default function ProductDetails() {
 
-    const { products } = useContext(GlobalContext)
-    const [inputValue, setInputValue] = useState("")
+    const {
+        products,
+        filteredProduct,
+        inputValue,
+        setInputValue
+    } = useContext(GlobalContext)
 
     return (
         <>
@@ -15,8 +19,14 @@ export default function ProductDetails() {
                 value={inputValue}
                 onChange={e => setInputValue(e.target.value)} />
 
+            {/* <select
+                value={category}
+                onChange={e => setCategory(e.target.value)}>
+                <option value=""></option>
+            </select> */}
+
             <div className="product-grid">
-                {products.map(p => (
+                {filteredProduct.map(p => (
                     <div key={p.id} className="card">
                         <div>
                             <img className="img-card" src={p.image} />
