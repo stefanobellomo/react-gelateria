@@ -1,13 +1,20 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { GlobalContext } from "../context/GlobalContext"
 
 export default function ProductDetails() {
 
     const { products } = useContext(GlobalContext)
+    const [inputValue, setInputValue] = useState("")
 
     return (
         <>
             <h1>Lista prodotti</h1>
+
+            <input
+                type="text"
+                value={inputValue}
+                onChange={e => setInputValue(e.target.value)} />
+
             <div className="product-grid">
                 {products.map(p => (
                     <div key={p.id} className="card">
