@@ -10,6 +10,7 @@ export function GlobalProvider({ children }) {
     const [products, setProducts] = useState([])
     const [inputValue, setInputValue] = useState("")
     const [connectivity, setConnectivity] = useState("All")
+    const [compareId, setCompareId] = useState([])
 
     const fetchProducts = async () => {
         try {
@@ -31,6 +32,20 @@ export function GlobalProvider({ children }) {
         const matchConnectivity = connectivity === "All" || p.connectivity === connectivity
         return matchSearch && matchConnectivity
     })
+
+    const toggleCompare = (products) => {
+        setCompareId(prev => {
+            if (prev.includes(products.id)) {
+                return prev.filter(id => id !== products.id)
+            }
+
+            if (prev.length > 3) {
+                return [...prev.slice(1), products.id]
+            }
+
+            return [...prev, products.id]
+        })
+    }
 
 
     return (
